@@ -1,21 +1,26 @@
 const router = require('express').Router();
-const notes = require('../../db/db.json');
-const { createNewNote, deleteNote } = require('../../lib/notes');
-const notes = require('../../db/db.json')
+var uniqid = require('uniqid');
+const addNewNote = require('../../lib/notes');
+const { notes } = require('../../db/notes.json');
 
 router.get('/notes', (req, res) => {
     res.json(notes);
 });
 
 router.post('/notes', (req, res) => {
-    const notesArray = notes;
-    req.body.id = notes.length.toString();
+    // Notes Database
+    let notesArray = notes;
 
-    createNewNote(req.body, notesArray);
+    // New Note ID
+    req.body.id = `${Math.floor(Math.random() * 100)}-${uniqid.time()}`;
+
+    const newNote = req.body;
+
+    addNewNote(newNote, notesArray);
 
     res.json({
         message: 'success',
-        newNoteAdded: req.body
+        note_Added: newNote
     })
 });
 

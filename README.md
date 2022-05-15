@@ -5,6 +5,13 @@
 
 A web application that allows users to create notes, which are displayed in a note list and saved in a database.
 
+#### Built With
+* HTML
+* CSS
+* Javascript
+* Node.js
+* npm Modules
+
 ## Table of Contents
 
 * [Usage](#usage)

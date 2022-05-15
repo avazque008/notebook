@@ -12,7 +12,7 @@ router.post('/notes', (req, res) => {
     let notesArray = notes;
 
     // New Note ID
-    req.body.id = `${Math.floor(Math.random() * 100)}-${uniqid.time()}`;
+    req.body.id = `${Math.floor(Math.random() * 100)}${uniqid.time()}`;
 
     const newNote = req.body;
 
@@ -23,6 +23,19 @@ router.post('/notes', (req, res) => {
         note_Added: newNote
     })
 });
+
+
+// Delete Route
+
+// router.delete('/notes/:id', (req, res) => {
+//     let notesArray = notes;
+
+//     deleteNote(req.params.id, notesArray);
+
+//     res.json({
+//         message: 'success'
+//     });
+// });
 
 
 module.exports = router;
